@@ -1,0 +1,47 @@
+<mujoco>
+  <option gravity="0 0 -9.81"/>
+
+  <worldbody>
+
+    <!-- BASE -->
+    <body name="base" pos="0 0 0">
+      
+      <!-- Joint 1: quay base -->
+      <joint name="base_rot" type="hinge" axis="0 0 1"/>
+
+      <geom type="cylinder" size="0.08 0.05" rgba="0.2 0.2 0.2 1"/>
+
+      <!-- TRỤC Z -->
+      <body name="z_axis" pos="0 0 0.05">
+        
+        <!-- Joint 2: vitme -->
+        <joint name="z_slide" type="slide" axis="0 0 1" range="0 0.2"/>
+
+        <geom type="cylinder" size="0.03 0.2" rgba="0.7 0.7 0.7 1"/>
+
+        <!-- KHUNG L1 (cố định) -->
+        <body name="link1" pos="0 0 0">
+          
+          <geom type="capsule"
+                fromto="0 0 0 0.29 0 0"
+                size="0.025"
+                rgba="0 0 1 1"/>
+
+          <!-- LINK 2 -->
+          <body name="link2" pos="0.29 0 0">
+
+            <!-- Joint 3: quay tay -->
+            <joint name="joint_arm" type="hinge" axis="0 0 1"/>
+
+            <geom type="capsule"
+                  fromto="0 0 0 0.18 0 0"
+                  size="0.02"
+                  rgba="1 0 0 1"/>
+
+          </body>
+        </body>
+      </body>
+    </body>
+
+  </worldbody>
+</mujoco>
